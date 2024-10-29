@@ -16,3 +16,10 @@ PaymentGateway.sln
 ```
 
 Feel free to change the structure of the solution, use a different test library etc.
+
+# To do
+[] Write some test to capture the validation logic of model
+[] Implement the validtors
+[] Test for POST payment
+[] Write a POST payment endpoint
+[] Review GET payment endpoint
