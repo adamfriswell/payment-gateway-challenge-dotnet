@@ -32,6 +32,8 @@ public class PaymentsController : Controller
     [HttpPost("")]
     public async Task<ActionResult<PostPaymentResponse?>> PostPaymentAysnc([FromBody] PostPaymentRequest request) {
 
+        //check payment repo for idem key
+
         var bankingSimulatorRequest = new BankingSimulatorRequest()
         {
             CardNumber = request.CardNumber,
@@ -48,6 +50,9 @@ public class PaymentsController : Controller
             var jsonRequest = JsonSerializer.Serialize(bankingSimulatorRequest);
             var response = await client.PostAsJsonAsync("payments", jsonRequest);
             var result = await response.Content.ReadAsStringAsync();
+
+            //ensure sucessful status code
+                //add to payment repo with idem key
             return new OkObjectResult(response);
         }
         catch (Exception)
